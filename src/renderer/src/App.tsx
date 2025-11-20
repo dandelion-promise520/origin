@@ -1,16 +1,23 @@
 import { Outlet } from 'react-router'
 import Menu from './components/menu/Menu'
+import { Flex } from '@radix-ui/themes'
 
 const App = (): React.JSX.Element => {
   return (
-    <div className="flex justify-center h-dvh items-center">
-      <div className="w-auto h-full flex justify-center items-center border-r-2 border-gray-4 p-4 overflow-hidden">
+    <Flex justify="between" align="center" height="100dvh">
+      <Flex
+        justify="center"
+        align="center"
+        height="100%"
+        width="auto"
+        className="border-r-2 border-gray-4 px-4 py-8 overflow-hidden drag"
+      >
         <Menu />
-      </div>
-      <div className="w-11/12 h-full flex justify-center items-center">
+      </Flex>
+      <Flex justify="center" align="center" height="100%" width="95%">
         <Outlet />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   )
 }
 

@@ -1,40 +1,52 @@
-import { TabNav } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+
 import { NavLink } from 'react-router'
 
 const Menu = (): React.JSX.Element => {
   return (
-    <div className="flex flex-col justify-between items-center h-full drag">
-      <section className="no-drag">
-        <TabNav.Root className="flex flex-col items-center gap-8" color="gray">
-          <TabNav.Link asChild>
-            <NavLink to="/">
-              <span className="icon-[fa7-solid--home] size-8 text-black" />
-            </NavLink>
-          </TabNav.Link>
-          <TabNav.Link asChild>
-            <NavLink to="schedule">
-              <span className="icon-[mingcute--schedule-fill] size-10 text-gray" />
-            </NavLink>
-          </TabNav.Link>
-          <TabNav.Link asChild>
-            <NavLink to="members">
-              <span className="icon-[tdesign--member-filled] size-8 text-gray" />
-            </NavLink>
-          </TabNav.Link>
-          <TabNav.Link asChild>
-            <NavLink to="dashboard">
-              <span className="icon-[streamline-ultimate--presentation-board-graph-bold] size-8 text-gray" />
-            </NavLink>
-          </TabNav.Link>
-        </TabNav.Root>
-      </section>
+    <Flex justify="between" align="center" direction="column" height="100%">
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        gap="4"
+        id="menu"
+        className="no-drag"
+      >
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          gap="4"
+          className="after:content-[''] after:w-8 after:h-0.5 after:rounded-xl after:bg-gray-4"
+        >
+          <NavLink to="/">
+            <span className="icon-[fa7-solid--home] size-6  " />
+          </NavLink>
+        </Flex>
 
-      <section style={{ writingMode: 'vertical-rl' }} className="text-xl font-bold ">
+        <Flex direction="column" gap="4">
+          <NavLink to="schedule">
+            <span className="icon-[mingcute--schedule-fill] size-7" />
+          </NavLink>
+          <NavLink to="members">
+            <span className="icon-[tdesign--member-filled] size-6 " />
+          </NavLink>
+          <NavLink to="dashboard">
+            <span className="icon-[streamline-ultimate--presentation-board-graph-bold] size-6 " />
+          </NavLink>
+        </Flex>
+      </Flex>
+
+      <section
+        style={{ writingMode: 'vertical-rl' }}
+        className="text-xl text-black font-bold select-none"
+      >
         rentabel
       </section>
 
       <section className="icon-[tabler--message] size-10 no-drag cursor-pointer" />
-    </div>
+    </Flex>
   )
 }
 

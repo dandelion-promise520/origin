@@ -10,3 +10,22 @@
 .no-drag {
   app-region: no-drag;
 }
+
+#menu {
+  a {
+    @apply flex items-center justify-center rounded-md px-4 py-2;
+
+    span {
+      @apply text-gray-9;
+    }
+
+    &:hover,
+    &.active {
+      @apply bg-gray-4;
+
+      span {
+        @apply text-black;
+      }
+    }
+  }
+}
