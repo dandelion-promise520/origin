@@ -4,7 +4,7 @@ import { Flex } from '@radix-ui/themes'
 
 const App = (): React.JSX.Element => {
   return (
-    <Flex justify="between" align="center" height="100dvh">
+    <Flex justify="between" position="relative" align="center" height="100dvh">
       <Flex
         justify="center"
         align="center"
@@ -12,6 +12,8 @@ const App = (): React.JSX.Element => {
         width="auto"
         px="4"
         py="4"
+        position="sticky"
+        top="0"
         className="border-r-2 border-gray-4 drag"
       >
         <Menu />
