@@ -229,7 +229,7 @@ const Title = (): React.JSX.Element => {
       {/* 下半部分 */}
       <Flex width="100%" gap="2" justify="center" className="no-drag">
         <TextField.Root
-          className="w-100"
+          className="max-w-200 flex-1"
           variant="classic"
           radius="full"
           color="gray"

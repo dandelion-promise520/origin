@@ -142,7 +142,7 @@ const Schedule = (): React.JSX.Element => {
           {data.map((item) => (
             <div
               key={item.id}
-              className={`border-gray-4 relative flex flex-col gap-4 rounded-md rounded-b-2xl border-2 p-4 pb-6 ${item.status === 'Draft' ? 'bg-gray-3' : item.status === 'Active' ? '' : 'border-red-200 bg-red-50'} `}
+              className={`border-gray-4 relative flex flex-col gap-4 rounded-md rounded-b-2xl border-2 p-4 pb-6 ${item.status === 'Draft' ? 'bg-[#f4f4f4]' : item.status === 'Active' ? '' : 'border-red-200 bg-[#fff8f9]'} `}
             >
               {/* id部分 */}
               <div className="flex items-center gap-1">
@@ -170,8 +170,9 @@ const Schedule = (): React.JSX.Element => {
                   value={getRemaining(item.startTime, item.endTime)}
                   color={getRemaining(item.startTime, item.endTime) === 100 ? 'red' : 'gray'}
                   highContrast={getRemaining(item.startTime, item.endTime) === 100 ? false : true}
-                  className='after:content-[""]'
                   size="1"
+                  className={`progress ${item.status === 'Draft' ? 'draft' : item.status === 'Active' ? '' : 'over-time'}`}
+                  style={{}}
                 />
               </div>
 
