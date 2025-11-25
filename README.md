@@ -1,34 +1,4 @@
-# origin
+# 一个使用electron-vite + react + vite + React-router + tailwindcss + radixUI做的一个小demo程序
 
-An Electron application with React and TypeScript
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Project Setup
-
-### Install
-
-```bash
-$ pnpm install
-```
-
-### Development
-
-```bash
-$ pnpm dev
-```
-
-### Build
-
-```bash
-# For windows
-$ pnpm build:win
-
-# For macOS
-$ pnpm build:mac
-
-# For Linux
-$ pnpm build:linux
-```
+# 项目预览
+<img width="1325" height="1000" alt="image" src="https://github.com/user-attachments/assets/9da9a8c1-746f-44d1-9b3f-6ac524c03cd3" />
