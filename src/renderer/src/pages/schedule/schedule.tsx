@@ -138,7 +138,7 @@ const Schedule = (): React.JSX.Element => {
         align="start"
         style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}
       >
-        <div className="grid w-full grid-cols-3 gap-6">
+        <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
           {data.map((item) => (
             <div
               key={item.id}
