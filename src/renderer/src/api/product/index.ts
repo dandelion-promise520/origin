@@ -13,5 +13,5 @@ export interface Product {
 }
 
 export const getProduct = (params?: string): Promise<Product[]> => {
-  return instance.get(params ? `/product?${params}` : `/product`)
+  return instance.get(params ? `/product?search=${params}` : `/product`)
 }

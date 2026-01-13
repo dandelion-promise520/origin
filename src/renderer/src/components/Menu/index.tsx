@@ -19,7 +19,7 @@ const Menu: React.FC = () => {
           justify="center"
           align="center"
           gap="4"
-          className="after:bg-gray-4 after:h-0.5 after:w-8 after:rounded-xl after:content-['']"
+          className="after:h-0.5 after:w-8 after:rounded-xl after:bg-gray-300 after:content-['']"
         >
           <NavLink to="/">
             <span className="icon-[fa7-solid--home] size-6" />

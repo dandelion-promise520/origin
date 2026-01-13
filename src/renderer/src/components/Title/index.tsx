@@ -15,13 +15,11 @@ const Title: React.FC<{
   // 处理回车按下事件
   const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>): Promise<void> => {
     if (event.key === 'Enter') {
-      if (inputValue !== '') {
-        setInputValue('')
+      setInputValue('')
+
+      if (setTableValue) {
         const res = await getProduct(inputValue)
-        console.log(res)
-        if (setTableValue) {
-          setTableValue(res)
-        }
+        setTableValue(res)
       }
     }
   }
@@ -99,7 +97,7 @@ const Title: React.FC<{
               variant="surface"
               highContrast
             >
-              <span className="text-gray-8">Calendar</span>
+              <span className="text-gray-400">Calendar</span>
             </Button>
           </Flex>
         </Flex>

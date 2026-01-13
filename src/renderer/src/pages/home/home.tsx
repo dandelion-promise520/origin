@@ -142,26 +142,26 @@ const Home: React.FC = () => {
           {data.map((item) => (
             <div
               key={item.id}
-              className={`border-gray-4 relative flex flex-col gap-4 rounded-md rounded-b-2xl border-2 p-4 pb-6 ${item.status === 'Draft' ? 'bg-[#f4f4f4]' : item.status === 'Active' ? '' : 'border-red-200 bg-[#fff8f9]'} `}
+              className={`relative flex flex-col gap-4 rounded-md rounded-b-2xl border-2 border-gray-200 p-4 pb-6 ${item.status === 'Draft' ? 'bg-[#f4f4f4]' : item.status === 'Active' ? '' : 'border-red-200 bg-[#fff8f9]'} `}
             >
               {/* id部分 */}
               <div className="flex items-center gap-1">
-                <span className="text-gray-10 text-xl font-bold">#{item.id}</span>
+                <span className="text-xl font-bold text-gray-500">#{item.id}</span>
                 <Separator mx="2" size="1" orientation="vertical" />
                 <span
-                  className={`text-2xl ${item.status === 'Draft' ? 'icon-[material-symbols--draft] text-gray-10' : item.status === 'Active' ? 'icon-[basil--lightning-alt-solid] text-blue-400' : 'icon-[majesticons--exclamation] text-red-400'}`}
+                  className={`text-2xl ${item.status === 'Draft' ? 'icon-[material-symbols--draft] text-gray-500' : item.status === 'Active' ? 'icon-[basil--lightning-alt-solid] text-blue-400' : 'icon-[majesticons--exclamation] text-red-400'}`}
                 />
-                <span className="text-gray-10 text-md font-medium">{item.status}</span>
+                <span className="text-md font-medium text-gray-500">{item.status}</span>
               </div>
               {/* 名称部分 */}
-              <span className={`${item.status === 'Draft' ? 'text-gray-10' : ''}`}>
+              <span className={`${item.status === 'Draft' ? 'text-gray-500' : ''}`}>
                 {item.machine};
               </span>
 
               {/* 时间部分 */}
               <div className="mt-auto flex flex-col gap-3">
                 {/* 文字部分 */}
-                <div className="text-gray-10 flex justify-between text-sm">
+                <div className="flex justify-between text-sm text-gray-500">
                   <span>{getTime(item.startTime)}</span>
                   <span>{getTime(item.endTime)}</span>
                 </div>
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
                   <div className="flex flex-col">
                     <span className="font-bold">{item.name}</span>
                     <div className="flex gap-1 text-sm">
-                      <span className="text-gray-10">Via</span>
+                      <span className="text-gray-500">Via</span>
                       <span>{item.device}</span>
                     </div>
                   </div>

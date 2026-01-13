@@ -32,9 +32,6 @@ importers:
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
-      tailwindcss-radix-colors:
-        specifier: ^2.1.0
-        version: 2.1.0(tailwindcss@4.1.17)
     devDependencies:
       '@electron-toolkit/eslint-config-prettier':
         specifier: ^3.0.0
@@ -3788,11 +3785,6 @@ packages:
   synckit@0.11.11:
     resolution: {integrity: sha512-MeQTA1r0litLUf0Rp/iisCaL8761lKAZHaimlbGK4j0HysC4PLfqygQj9srcs0m2RdtDYnF8UuYyKpbjHYp7Jw==}
     engines: {node: ^14.18.0 || >=16.0.0}
-
-  tailwindcss-radix-colors@2.1.0:
-    resolution: {integrity: sha512-xh2bDBvYacUbMFfg6TINGN30K+GfeP33sEd1+27xHeBskODc2cNiSPOOfaHjB78LN7l4l8BNPZfXcGmhsRsUJQ==}
-    peerDependencies:
-      tailwindcss: '>=4.0.0'
 
   tailwindcss@4.1.17:
     resolution: {integrity: sha512-j9Ee2YjuQqYT9bbRTfTZht9W/ytp5H+jJpZKiYdP/bpnXARAuELt9ofP0lPnmHjbga7SNQIxdTAXCmtKVYjN+Q==}
@@ -8092,10 +8084,6 @@ snapshots:
   synckit@0.11.11:
     dependencies:
       '@pkgr/core': 0.2.9
-
-  tailwindcss-radix-colors@2.1.0(tailwindcss@4.1.17):
-    dependencies:
-      tailwindcss: 4.1.17
 
   tailwindcss@4.1.17: {}
 

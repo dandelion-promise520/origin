@@ -10,7 +10,7 @@ const App: React.FC = () => {
         align="center"
         height="100%"
         p="4"
-        className="border-gray-4 drag border-r-2"
+        className="drag border-r-2 border-gray-200 bg-gray-50"
       >
         <Menu />
       </Flex>

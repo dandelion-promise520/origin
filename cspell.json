@@ -24,14 +24,14 @@
     "**/package.json",
     "**/*.md",
     "**/stats.html",
-    "eslint.config.mjs",
     ".gitignore",
-    ".prettierignore",
     "cspell.json",
     "commitlint.config.js",
     "biome.json",
     ".cspell",
     ".oxlintrc.json",
-    ".oxfmtrc.json"
+    ".oxfmtrc.json",
+    "electron-builder.yml",
+    "pnpm-lock.yaml"
   ]
 }

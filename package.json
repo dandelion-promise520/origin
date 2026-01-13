@@ -35,8 +35,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "electron-updater": "^6.3.9",
     "react-router": "^7.9.6",
-    "tailwindcss": "^4.1.17",
-    "tailwindcss-radix-colors": "^2.1.0"
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",

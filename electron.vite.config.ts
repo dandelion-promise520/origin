@@ -9,7 +9,10 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()]
   },
   preload: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
+    build: {
+      outDir: 'out/preload' // 显式指定输出目录
+    }
   },
   renderer: {
     resolve: {
@@ -26,14 +29,17 @@ export default defineConfig({
         editor: 'code'
       })
     ],
+    build: {
+      outDir: 'out/renderer' // 也建议显式指定
+    },
     server: {
       host: '0.0.0.0',
       cors: true,
       proxy: {
         '/api': {
-          target: 'http://192.168.1.242:8000', // 目标服务器地址
-          changeOrigin: true, // 允许跨域
-          rewrite: (path) => path.replace(/^\/api/, '') // 重写路径
+          target: 'http://192.168.1.242:8000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
     }

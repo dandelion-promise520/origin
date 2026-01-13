@@ -11,6 +11,6 @@
   }
 
   .table-striped tbody tr:hover {
-    @apply bg-[#f9f9fb];
+    @apply bg-gray-200;
   }
 }

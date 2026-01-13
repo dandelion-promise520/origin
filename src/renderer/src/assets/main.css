@@ -1,6 +1,5 @@
 @import './base.css';
 @import 'tailwindcss';
-@import 'tailwindcss-radix-colors/dist/gray.css';
 @plugin '@iconify/tailwind4';
 
 .drag {
@@ -17,12 +16,12 @@
     @apply flex items-center justify-center rounded-md px-4 py-2;
 
     span {
-      @apply text-gray-9;
+      @apply text-gray-400;
     }
 
     &:hover,
     &.active {
-      @apply bg-gray-4;
+      @apply bg-gray-200;
 
       span {
         @apply text-black;
