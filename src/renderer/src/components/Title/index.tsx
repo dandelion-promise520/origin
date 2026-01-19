@@ -1,5 +1,6 @@
 import { Button, Flex, Separator, Text, TextField } from '@radix-ui/themes'
-import { getProduct, Product } from '@renderer/api/product'
+import { getProduct } from '@renderer/api/product'
+import { Product } from '@renderer/types'
 import React, { useState } from 'react'
 
 const Title: React.FC<{
@@ -19,7 +20,7 @@ const Title: React.FC<{
 
       if (setTableValue) {
         const res = await getProduct(inputValue)
-        setTableValue(res)
+        setTableValue(res.data)
       }
     }
   }

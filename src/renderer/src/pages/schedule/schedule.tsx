@@ -1,8 +1,9 @@
 import { Flex, Table } from '@radix-ui/themes'
-import { getProduct, Product } from '@renderer/api/product'
+import { getProduct } from '@renderer/api/product'
 import React, { useEffect, useState } from 'react'
 import './table.css'
 import Title from '@renderer/components/Title'
+import { Product } from '@renderer/types'
 
 const Schedule: React.FC = () => {
   const [rows, setRows] = useState<Product[]>([])
@@ -10,7 +11,7 @@ const Schedule: React.FC = () => {
   useEffect(() => {
     ;(async () => {
       const res = await getProduct()
-      setRows(res)
+      setRows(res.data)
     })()
   }, [])
 
