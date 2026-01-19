@@ -1,4 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "out/renderer"
+  "outputDirectory": "out/renderer",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://elysia.ljflovezxm.cn/:path*"
+    }
+  ]
 }
