@@ -1,6 +1,7 @@
-import { Button, Flex, Separator, Text, TextField } from '@radix-ui/themes'
+// import { Text } from '@radix-ui/themes'
 import { getProduct } from '@renderer/api/product'
 import { Product } from '@renderer/types'
+import { Button, ConfigProvider, Input, Radio } from 'antd'
 import React, { useState } from 'react'
 
 const Title: React.FC<{
@@ -25,103 +26,84 @@ const Title: React.FC<{
     }
   }
 
+  // 顶部按钮组切换事件
+  const [buttonGroup, setButtonGroup] = useState<'cardView' | 'calendar'>('cardView')
+
   return (
     // 父元素
-    <Flex direction="column" className="drag z-100" gap="6" px="4" py="6">
+    <div className="drag z-100 flex flex-col gap-6 px-4 py-6">
       {/* 上半部分 */}
-      <Flex width="100%" justify="between">
+      <header className="flex w-full justify-between">
         {/* 左侧部分 */}
-        <Flex gap="4">
-          <Text
-            size="5"
-            weight="bold"
-            className="no-drag flex items-center justify-center select-none"
-          >
+        <section className="flex gap-4">
+          <span className="flex items-center justify-center text-xl font-bold select-none">
             Rent Order
-          </Text>
+          </span>
 
-          <Separator mx="2" size="4" orientation="vertical" />
+          <div className="h-full rounded-full border border-gray-300"></div>
 
-          <Flex gap="2">
-            <Button
-              className="no-drag"
-              style={{ cursor: 'pointer' }}
-              color="gray"
-              radius="large"
-              size="3"
-              variant="classic"
-              highContrast
-            >
+          <div className="flex gap-3">
+            <Button className="no-drag" color="default" variant="solid" size="large">
               <span className="icon-[mdi--plus] size-6" />
-              Add Order
+              <span className="font-semibold">Add Order</span>
             </Button>
 
-            <Button
-              className="no-drag"
-              style={{ cursor: 'pointer' }}
-              color="gray"
-              radius="large"
-              size="3"
-              variant="surface"
-              highContrast
-            >
-              <span className="icon-[material-symbols--download] size-6" /> Export
+            <Button className="no-drag" size="large">
+              <span className="icon-[material-symbols--download] size-6" />
+              <span className="font-semibold">Export</span>
             </Button>
-          </Flex>
-        </Flex>
+          </div>
+        </section>
 
         {/* 右侧部分 */}
-        <Flex align="center" className="mx-auto">
-          <Flex>
-            <Button
-              className="no-drag"
-              style={{
-                cursor: 'pointer',
-                border: '3px solid #000',
-                boxShadow: 'none'
-              }}
-              color="gray"
-              radius="large"
-              size="3"
-              variant="outline"
-              highContrast
+        <section className="no-drag mx-auto items-center select-none">
+          <ConfigProvider
+            theme={{
+              components: {
+                Radio: {
+                  buttonColor: '#bdbdc6',
+                  buttonSolidCheckedColor: '#000000'
+                }
+              }
+            }}
+          >
+            <Radio.Group
+              size="large"
+              value={buttonGroup}
+              onChange={(e) => setButtonGroup(e.target.value)}
+              id="button-group"
             >
-              Cord View
-            </Button>
-
-            <Button
-              className="no-drag"
-              style={{ cursor: 'pointer' }}
-              color="gray"
-              radius="large"
-              size="3"
-              variant="surface"
-              highContrast
-            >
-              <span className="text-gray-400">Calendar</span>
-            </Button>
-          </Flex>
-        </Flex>
-      </Flex>
-
+              <Radio.Button
+                value="cardView"
+                className={`base ${buttonGroup === 'cardView' ? 'checked' : ''}`}
+              >
+                Card view
+              </Radio.Button>
+              <Radio.Button
+                value="calendar"
+                className={`base ${buttonGroup === 'calendar' ? 'checked' : ''}`}
+              >
+                Calendar
+              </Radio.Button>
+            </Radio.Group>
+          </ConfigProvider>
+        </section>
+      </header>
       {/* 下半部分 */}
-      <Flex width="100%" gap="2" justify="center" className="no-drag">
-        <TextField.Root
-          className="flex-1"
-          variant="classic"
-          radius="full"
-          color="gray"
-          placeholder="Search order,product,customer"
+      <footer className="no-drag flex w-full justify-center gap-4">
+        <Input
+          styles={{
+            root: { borderRadius: '100px' }
+          }}
+          className="no-drag"
+          placeholder="请输入您想搜索的产品"
+          prefix={<span className="icon-[mingcute--search-line]" />}
           value={inputValue}
           onChange={handleChange}
           onKeyUp={handleKeyDown}
-        >
-          <TextField.Slot>
-            <span className="icon-[mingcute--search-line]" />
-          </TextField.Slot>
-        </TextField.Root>
-      </Flex>
-    </Flex>
+        />
+      </footer>
+    </div>
   )
 }
 

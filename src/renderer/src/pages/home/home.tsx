@@ -168,16 +168,15 @@ const Home: React.FC = () => {
                 {/* 进度条 */}
                 <Progress
                   value={getRemaining(item.startTime, item.endTime)}
-                  color={getRemaining(item.startTime, item.endTime) === 100 ? 'red' : 'gray'}
+                  color={getRemaining(item.startTime, item.endTime) === 100 ? 'red' : 'green'}
                   highContrast={getRemaining(item.startTime, item.endTime) === 100 ? false : true}
-                  size="1"
                   className={`progress ${item.status === 'Draft' ? 'draft' : item.status === 'Active' ? '' : 'over-time'}`}
                   style={{}}
                 />
               </div>
 
               {/* 个人信息部分 */}
-              <div className="mt-10 flex items-center justify-between">
+              <div className="flex items-center justify-between">
                 {/* 信息部分 */}
                 <div className="flex items-center justify-center gap-4">
                   <Avatar
