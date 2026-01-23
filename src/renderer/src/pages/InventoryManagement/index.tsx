@@ -1,18 +1,35 @@
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons'
 import { getProduct } from '@renderer/api/product'
 import { useQuery } from '@tanstack/react-query'
-import { Button, ConfigProvider, Input, Select, Table } from 'antd'
-import React from 'react'
+import { Button, ConfigProvider, Form, Input, Select, Table } from 'antd'
+import React, { useState } from 'react'
 
 export const InventoryManagement: React.FC = () => {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['productData'],
+  // 请求逻辑层
+
+  // 搜索字段
+  const [searchValue, setSearchValue] = useState('')
+
+  // 获取产品请求
+  const { data, isPending, error } = useQuery({
+    queryKey: ['productData', searchValue],
     queryFn: async () => {
-      const res = await getProduct()
+      const res = await getProduct(searchValue)
       return res
     }
   })
 
+  // ui层
+  // 获取表单实例以使用表单方法
+  const [form] = Form.useForm()
+
+  // 搜索事件
+  const handleSearch = (formData: { search: string }): void => {
+    form.resetFields()
+    setSearchValue(formData.search)
+  }
+
+  // 表格基本列
   const columns = [
     {
       title: '产品名称',
@@ -58,7 +75,12 @@ export const InventoryManagement: React.FC = () => {
           新增货物
         </Button>
         <section className="flex gap-4">
-          <Input placeholder="搜索产品..." prefix={<SearchOutlined />} />
+          <Form onFinish={handleSearch} form={form}>
+            <Form.Item<{ search: string | number }> name="search" style={{ margin: 0 }}>
+              <Input placeholder="搜索产品..." prefix={<SearchOutlined />} />
+            </Form.Item>
+          </Form>
+
           <Select
             style={{ minWidth: 140 }}
             showSearch={{
