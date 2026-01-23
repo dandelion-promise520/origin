@@ -12,9 +12,3 @@
 .center {
   @apply flex items-center justify-center;
 }
-
-#cus-sider {
-  .ant-layout-sider-children {
-    @apply flex flex-col;
-  }
-}

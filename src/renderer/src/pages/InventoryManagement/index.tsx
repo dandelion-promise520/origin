@@ -1,20 +1,17 @@
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons'
 import { getProduct } from '@renderer/api/product'
-import { Product } from '@renderer/types'
+import { useQuery } from '@tanstack/react-query'
 import { Button, ConfigProvider, Input, Select, Table } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export const InventoryManagement: React.FC = () => {
-  const [dataSource, setDataSource] = useState<Product[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
-
-  useEffect(() => {
-    ;(async () => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ['productData'],
+    queryFn: async () => {
       const res = await getProduct()
-      setLoading(false)
-      setDataSource(res.data)
-    })()
-  }, [])
+      return res
+    }
+  })
 
   const columns = [
     {
@@ -87,15 +84,18 @@ export const InventoryManagement: React.FC = () => {
             }
           }}
         >
-          <Table
-            className="test"
-            bordered
-            // pagination={false}
-            loading={loading}
-            dataSource={dataSource}
-            columns={columns}
-            rowClassName={(_, index) => (index % 2 === 0 ? 'bg-gray-100' : '')}
-          ></Table>
+          {error ? (
+            <div>请求数据出错：{error.message}</div>
+          ) : (
+            <Table
+              className="test"
+              bordered
+              loading={isPending}
+              dataSource={data?.data}
+              columns={columns}
+              rowClassName={(_, index) => (index % 2 === 0 ? 'bg-gray-100' : '')}
+            />
+          )}
         </ConfigProvider>
       </main>
     </div>

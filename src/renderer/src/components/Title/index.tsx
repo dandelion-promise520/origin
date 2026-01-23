@@ -1,9 +1,10 @@
+import './style.css'
+
+import { DownloadOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons'
 import { getProduct } from '@renderer/api/product'
 import { Product } from '@renderer/types'
 import { Button, ConfigProvider, Input, Radio } from 'antd'
 import React, { useState } from 'react'
-import './style.css'
-import { DownloadOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons'
 
 const Title: React.FC<{
   setTableValue?: React.Dispatch<React.SetStateAction<Product[]>>

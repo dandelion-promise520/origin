@@ -1,8 +1,10 @@
-import React from 'react'
-import Title from '../../components/Title'
-import { Avatar, Button, Progress, ProgressProps } from 'antd'
-import { DraftIcon, ExclamationIcon, LightningIcon } from '@renderer/components/Icon'
 import { RightOutlined } from '@ant-design/icons'
+import { DraftIcon, ExclamationIcon, LightningIcon } from '@renderer/components/Icon'
+import { Avatar, Button, Progress, ProgressProps } from 'antd'
+import React from 'react'
+
+import Title from '../../components/Title'
+
 import { dataInter } from './types'
 
 const Home: React.FC = () => {

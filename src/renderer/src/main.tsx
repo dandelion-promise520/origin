@@ -1,22 +1,30 @@
 import './assets/main.css'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router'
+
 import App from './App'
-import schedule from './pages/Schedule'
+import { ChartAnalysis } from './pages/ChartAnalysis'
 import { ExpiryBoard } from './pages/ExpiryBoard'
 import { InventoryManagement } from './pages/InventoryManagement'
-import { ChartAnalysis } from './pages/ChartAnalysis'
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 分钟后数据才被认为过期
+      gcTime: 10 * 60 * 1000 // 10 分钟后删除未使用的缓存
+    }
+  }
+})
 
 const router = createHashRouter([
   {
     path: '/',
     Component: App,
     children: [
-      { path: 'schedule', Component: schedule },
-      { path: 'ExpiryBoard', Component: ExpiryBoard },
-      { index: true, Component: InventoryManagement },
+      { index: true, Component: ExpiryBoard },
+      { path: 'InventoryManagement', Component: InventoryManagement },
       { path: 'ChartAnalysis', Component: ChartAnalysis }
     ]
   }
@@ -24,6 +32,8 @@ const router = createHashRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </StrictMode>
 )

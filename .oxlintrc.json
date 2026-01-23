@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["typescript", "react", "unicorn"],
+  "plugins": ["typescript", "react", "unicorn", "import"],
+  "jsPlugins": ["@tanstack/eslint-plugin-query"],
   "categories": {
     "correctness": "off"
   },

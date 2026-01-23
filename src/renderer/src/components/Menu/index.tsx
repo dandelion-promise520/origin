@@ -1,7 +1,7 @@
-import React from 'react'
-
-import { NavLink } from 'react-router'
 import './style.css'
+
+import React from 'react'
+import { NavLink } from 'react-router'
 
 const Menu: React.FC = () => {
   return (

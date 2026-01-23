@@ -1,8 +1,8 @@
 import { getProduct } from '@renderer/api/product'
-import React, { useEffect, useState } from 'react'
 import Title from '@renderer/components/Title'
 import { Product } from '@renderer/types'
 import { ConfigProvider, Table } from 'antd'
+import React, { useEffect, useState } from 'react'
 
 const Schedule: React.FC = () => {
   const [dataSource, setDataSource] = useState<Product[]>([])
