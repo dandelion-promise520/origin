@@ -2,9 +2,9 @@ import { AppstoreOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icon
 import { getProduct } from '@renderer/api/product'
 import { useQuery } from '@tanstack/react-query'
 import { Button, ConfigProvider, Form, Input, Radio, RadioChangeEvent, Select, Table } from 'antd'
-import React, { useState } from 'react'
+import { JSX, useState } from 'react'
 
-export const ExpiryBoard: React.FC = () => {
+export const ExpiryBoard = (): JSX.Element => {
   const onChange = (e: RadioChangeEvent): void => {
     console.log(`radio checked:${e.target.value}`)
   }

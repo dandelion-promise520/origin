@@ -2,9 +2,9 @@ import { PlusOutlined, SearchOutlined } from '@ant-design/icons'
 import { getProduct } from '@renderer/api/product'
 import { useQuery } from '@tanstack/react-query'
 import { Button, ConfigProvider, Form, Input, Select, Table } from 'antd'
-import React, { useState } from 'react'
+import { JSX, useState } from 'react'
 
-export const InventoryManagement: React.FC = () => {
+export const InventoryManagement = (): JSX.Element => {
   // 请求逻辑层
 
   // 搜索字段

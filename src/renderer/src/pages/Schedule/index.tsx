@@ -1,10 +1,9 @@
 import { getProduct } from '@renderer/api/product'
-import Title from '@renderer/components/Title'
 import { Product } from '@renderer/types'
 import { ConfigProvider, Table } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { JSX, useEffect, useState } from 'react'
 
-const Schedule: React.FC = () => {
+const Schedule = (): JSX.Element => {
   const [dataSource, setDataSource] = useState<Product[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -46,7 +45,6 @@ const Schedule: React.FC = () => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <Title setTableValue={setDataSource} setLoading={setLoading} />
       {/* 内容部分 */}
       <div className="p-4">
         <ConfigProvider

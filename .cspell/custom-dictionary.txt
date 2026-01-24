@@ -4,6 +4,7 @@ commitlint
 crdt
 CRDT
 Efendi
+gsap
 idcard
 majesticons
 Mavic

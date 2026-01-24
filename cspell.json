@@ -32,6 +32,7 @@
     ".oxlintrc.json",
     ".oxfmtrc.json",
     "electron-builder.yml",
-    "pnpm-lock.yaml"
+    "pnpm-lock.yaml",
+    ".env.*"
   ]
 }

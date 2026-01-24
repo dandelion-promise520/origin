@@ -1,13 +1,11 @@
 import { RightOutlined } from '@ant-design/icons'
-import { DraftIcon, ExclamationIcon, LightningIcon } from '@renderer/components/Icon'
+import { DraftIcon, ExclamationIcon, LightningIcon } from '@renderer/components'
 import { Avatar, Button, Progress, ProgressProps } from 'antd'
-import React from 'react'
-
-import Title from '../../components/Title'
+import { JSX } from 'react'
 
 import { dataInter } from './types'
 
-const Home: React.FC = () => {
+const Home = (): JSX.Element => {
   // 卡片数据信息
   const data: dataInter[] = [
     {
@@ -161,7 +159,7 @@ const Home: React.FC = () => {
   }
 
   //内容部分
-  const Main: React.FC = () => {
+  const Main = (): JSX.Element => {
     return (
       <div className="flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-4">
         <main className="grid w-full grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
@@ -242,7 +240,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex size-full flex-col">
-      <Title />
       <Main />
     </div>
   )
