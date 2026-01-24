@@ -1,1 +1,1 @@
-export { ChartAnalysis } from './chart-analysis'
+export { ChartAnalysis } from './ChartAnalysis'

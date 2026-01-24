@@ -1,7 +1,7 @@
-import { AppLayout } from '@renderer/layouts/app-layout/app-layout'
-import { ChartAnalysis } from '@renderer/pages/chart-analysis/chart-analysis'
-import { ExpiryBoard } from '@renderer/pages/expiry-board/expiry-board'
-import { InventoryManagement } from '@renderer/pages/inventory-management/inventory-management'
+import { AppLayout } from '@renderer/layouts/app-layout/AppLayout'
+import { ChartAnalysis } from '@renderer/pages/chart-analysis/ChartAnalysis'
+import { ExpiryBoard } from '@renderer/pages/expiry-board/ExpiryBoard'
+import { InventoryManagement } from '@renderer/pages/inventory-management/InventoryManagement'
 import { createHashRouter } from 'react-router'
 
 export const router = createHashRouter([

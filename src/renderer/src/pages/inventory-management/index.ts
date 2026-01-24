@@ -1,1 +1,1 @@
-export { InventoryManagement } from './inventory-management'
+export { InventoryManagement } from './InventoryManagement'

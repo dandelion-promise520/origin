@@ -1,1 +1,1 @@
-export { ExpiryBoard } from './expiry-board'
+export { ExpiryBoard } from './ExpiryBoard'
