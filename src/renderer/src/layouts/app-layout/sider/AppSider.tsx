@@ -1,12 +1,45 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
-import { Button } from 'antd'
+import {
+  AppstoreOutlined,
+  BarChartOutlined,
+  CalendarOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
+} from '@ant-design/icons'
+import { Button, Menu } from 'antd'
 import Sider from 'antd/es/layout/Sider'
 import { JSX, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router'
 
-import { AppMenu } from './AppMenu'
+// 菜单项配置
+const menuConfig = [
+  {
+    key: '/',
+    icon: <CalendarOutlined />,
+    label: '效期看板'
+  },
+  {
+    key: '/InventoryManagement',
+    icon: <AppstoreOutlined />,
+    label: '货物管理'
+  },
+  {
+    key: '/ChartAnalysis',
+    icon: <BarChartOutlined />,
+    label: '图表分析'
+  }
+]
+
+const menuItems = menuConfig.map((item) => ({
+  key: item.key,
+  icon: item.icon,
+  label: item.label
+}))
 
 export const AppSider = (): JSX.Element => {
   const [collapsed, setCollapsed] = useState(true)
+
+  const location = useLocation()
+  const navigate = useNavigate()
 
   return (
     <Sider theme="light" trigger={null} collapsible collapsed={collapsed} id="cus-sider">
@@ -30,7 +63,23 @@ export const AppSider = (): JSX.Element => {
           origin
         </span>
       </div>
-      <AppMenu />
+      <Menu
+        selectedKeys={[location.pathname]}
+        onSelect={({ key }) => {
+          // gsap.to(, {
+          // duration: 2, // 动画持续2秒
+          // opacity: 0,
+          // y: 100,
+          // onComplete: () => {
+          // }
+          // })
+          navigate(key)
+        }}
+        theme="light"
+        mode="inline"
+        className="no-drag"
+        items={menuItems}
+      />
     </Sider>
   )
 }

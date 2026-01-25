@@ -1,6 +1,6 @@
 import { BellOutlined, CalendarOutlined, UserOutlined } from '@ant-design/icons'
-import { AntHeader } from '@renderer/ui/antd'
 import { Card, theme } from 'antd'
+import { Header } from 'antd/es/layout/layout'
 import { JSX, useState } from 'react'
 
 export const AppHeader = (): JSX.Element => {
@@ -18,7 +18,7 @@ export const AppHeader = (): JSX.Element => {
   } = theme.useToken()
 
   return (
-    <AntHeader
+    <Header
       style={{
         height: 'auto',
         padding: 0,
@@ -35,9 +35,9 @@ export const AppHeader = (): JSX.Element => {
           <UserOutlined className="no-drag text-4xl" />
         </div>
       </section>
-      {/* 如果是效期看板页的话，就加4个卡片 */}
+      {/* 如果是效期看板页的话，就加卡片组件 */}
       {location.pathname === '/' && (
-        <section className="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-4">
+        <section className="grid grid-cols-[repeat(auto-fit,minmax(212px,1fr))] gap-4">
           {cardData.map((item) => (
             <Card key={item.name} className="no-drag">
               <div className="flex items-center gap-4">
@@ -60,6 +60,6 @@ export const AppHeader = (): JSX.Element => {
           ))}
         </section>
       )}
-    </AntHeader>
+    </Header>
   )
 }
