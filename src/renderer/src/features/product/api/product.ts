@@ -1,6 +1,5 @@
+import { instance } from '@renderer/api/instance'
 import { ApiResponse } from '@renderer/types'
-
-import { instance } from '../instance'
 
 import { Product } from './types'
 

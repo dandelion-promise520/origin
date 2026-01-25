@@ -1,4 +1,4 @@
-import { getProduct, Product } from '@renderer/api/product'
+import { getProduct, Product } from '@renderer/features/product'
 import { ConfigProvider, Table } from 'antd'
 import { JSX, useEffect, useState } from 'react'
 

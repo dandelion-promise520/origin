@@ -1,5 +1,5 @@
 import { AppstoreOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons'
-import { getProduct } from '@renderer/api/product'
+import { getProduct } from '@renderer/features/product'
 import { useQuery } from '@tanstack/react-query'
 import { Button, ConfigProvider, Form, Input, Radio, RadioChangeEvent, Select, Table } from 'antd'
 import { JSX, useState } from 'react'
