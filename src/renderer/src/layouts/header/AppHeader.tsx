@@ -1,10 +1,19 @@
 import { BellOutlined, CalendarOutlined, UserOutlined } from '@ant-design/icons'
 import { Card, theme } from 'antd'
 import { Header } from 'antd/es/layout/layout'
-import { JSX, useState } from 'react'
+import { JSX, useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
+
+import { useLayoutContext } from '../LayoutContext'
+import { menuConfig } from '../sider'
 
 export const AppHeader = (): JSX.Element => {
-  const [header, _setHeader] = useState<string>('效期看板')
+  const { registerRef } = useLayoutContext()
+  const {
+    token: { colorBgLayout }
+  } = theme.useToken()
+
+  const location = useLocation()
 
   const [cardData, _setCardData] = useState([
     { name: '总库存', quantity: 850, iconColor: 'blue', iconBgColor: '#dbeafe' },
@@ -13,12 +22,23 @@ export const AppHeader = (): JSX.Element => {
     { name: '正常库存', quantity: 5, iconColor: 'green', iconBgColor: '#dcfce7' }
   ])
 
-  const {
-    token: { colorBgLayout }
-  } = theme.useToken()
+  const [header, setHeader] = useState<string>('')
+
+  // 控制卡片在什么情况下展示
+  const [showCard, setShowCard] = useState<boolean>(false)
+
+  useEffect(() => {
+    setHeader(menuConfig.find((item) => item.key === location.pathname)?.label || '')
+    if (location.pathname === '/') {
+      setShowCard(true)
+    } else {
+      setShowCard(false)
+    }
+  }, [location.pathname])
 
   return (
     <Header
+      ref={registerRef('header')}
       style={{
         height: 'auto',
         padding: 0,
@@ -36,7 +56,7 @@ export const AppHeader = (): JSX.Element => {
         </div>
       </section>
       {/* 如果是效期看板页的话，就加卡片组件 */}
-      {location.pathname === '/' && (
+      {showCard && (
         <section className="grid grid-cols-[repeat(auto-fit,minmax(212px,1fr))] gap-4">
           {cardData.map((item) => (
             <Card key={item.name} className="no-drag">

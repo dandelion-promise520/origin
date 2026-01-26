@@ -1,48 +1,29 @@
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CalendarOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined
-} from '@ant-design/icons'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Button, Menu } from 'antd'
 import Sider from 'antd/es/layout/Sider'
+import gsap from 'gsap'
 import { JSX, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
-// 菜单项配置
-const menuConfig = [
-  {
-    key: '/',
-    icon: <CalendarOutlined />,
-    label: '效期看板'
-  },
-  {
-    key: '/InventoryManagement',
-    icon: <AppstoreOutlined />,
-    label: '货物管理'
-  },
-  {
-    key: '/ChartAnalysis',
-    icon: <BarChartOutlined />,
-    label: '图表分析'
-  }
-]
+import { useLayoutContext } from '../LayoutContext'
+
+import { menuConfig } from './menuConfig'
 
 const menuItems = menuConfig.map((item) => ({
   key: item.key,
-  icon: item.icon,
+  icon: <item.icon />,
   label: item.label
 }))
 
 export const AppSider = (): JSX.Element => {
   const [collapsed, setCollapsed] = useState(true)
+  const { getRef } = useLayoutContext()
 
   const location = useLocation()
   const navigate = useNavigate()
 
   return (
-    <Sider theme="light" trigger={null} collapsible collapsed={collapsed} id="cus-sider">
+    <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
       <div className="flex flex-nowrap items-center">
         <Button
           type="text"
@@ -66,14 +47,24 @@ export const AppSider = (): JSX.Element => {
       <Menu
         selectedKeys={[location.pathname]}
         onSelect={({ key }) => {
-          // gsap.to(, {
-          // duration: 2, // 动画持续2秒
-          // opacity: 0,
-          // y: 100,
-          // onComplete: () => {
-          // }
-          // })
-          navigate(key)
+          const contentElement = getRef('content')
+          if (contentElement) {
+            gsap.to(contentElement, {
+              duration: 0.5,
+              opacity: 0,
+              y: 100,
+              onComplete: () => {
+                navigate(key)
+                gsap.to(contentElement, {
+                  duration: 0.5,
+                  opacity: 1,
+                  y: 0
+                })
+              }
+            })
+          } else {
+            navigate(key)
+          }
         }}
         theme="light"
         mode="inline"

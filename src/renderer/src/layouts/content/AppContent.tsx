@@ -1,18 +1,19 @@
 import { theme } from 'antd'
 import { Content } from 'antd/es/layout/layout'
-import { JSX, useRef } from 'react'
+import { JSX } from 'react'
 import { Outlet } from 'react-router'
 
-export const AppContent = (): JSX.Element => {
-  const contentRef = useRef<HTMLDivElement>(null)
+import { useLayoutContext } from '../LayoutContext'
 
+export const AppContent = (): JSX.Element => {
+  const { registerRef } = useLayoutContext()
   const {
     token: { colorBgContainer, borderRadiusLG }
   } = theme.useToken()
 
   return (
     <Content
-      ref={contentRef}
+      ref={registerRef('content')}
       className="no-drag"
       style={{
         margin: '16px 24px',

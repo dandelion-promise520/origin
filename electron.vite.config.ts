@@ -24,13 +24,13 @@ export default defineConfig(({ mode }) => {
         }
       },
       plugins: [
-        react(),
-        tailwindcss(),
         codeInspectorPlugin({
           bundler: 'vite',
           showSwitch: true,
           editor: 'code'
-        })
+        }),
+        react(),
+        tailwindcss()
       ],
       build: {
         outDir: 'out/renderer' // 也建议显式指定

@@ -3,16 +3,19 @@ import { JSX } from 'react'
 
 import { AppContent } from './content'
 import { AppHeader } from './header'
+import { LayoutProvider } from './LayoutContext'
 import { AppSider } from './sider'
 
 export const AppLayout = (): JSX.Element => {
   return (
-    <Layout className="drag h-dvh">
-      <AppSider />
-      <Layout>
-        <AppHeader />
-        <AppContent />
+    <LayoutProvider>
+      <Layout className="drag h-dvh">
+        <AppSider />
+        <Layout>
+          <AppHeader />
+          <AppContent />
+        </Layout>
       </Layout>
-    </Layout>
+    </LayoutProvider>
   )
 }
